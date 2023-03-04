@@ -6,6 +6,14 @@ import instagram from '../../assets/instagram.svg'
 import './header.scss'
 
 const Header = () => {
+
+    const onCountry = (e) => {
+        e.target.parentElement.childNodes.forEach(button => {
+            button.classList.remove('active')
+        })
+        e.target.classList.add('active')
+    }
+
     return (
         <header className="header">
             <div className="header-linkbar">
@@ -44,10 +52,10 @@ const Header = () => {
             <nav className="header-nav">
                 <div className="container">
                     <div className="header-nav-inner">
-                    <a href="" className="header-nav-link">World</a>
-                    <a href="" className="header-nav-link">USA</a>
-                    <a href="" className="header-nav-link">England</a>
-                    <a href="" className="header-nav-link">Germany</a>
+                        <button onClick={(e) => onCountry(e)} className="header-nav-link active">world</button>
+                        <button onClick={(e) => onCountry(e)} className="header-nav-link">usa</button>
+                        <button onClick={(e) => onCountry(e)} className="header-nav-link">england</button>
+                        <button onClick={(e) => onCountry(e)} className="header-nav-link">germany</button>
                     </div>
                 </div>                
             </nav>

@@ -5,62 +5,49 @@ import './mainNews.scss'
 
 const MainNews = () => {
 
+    const news = useSelector(state => state.mainNews.mainNews)
+    const country = useSelector(state => state.mainNews.country)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(mainNewsThunk())
-    })
+        dispatch(mainNewsThunk(country))
+    }, [])
+
+    const renderPosts = (arr) => {
+        const posts = arr.map(post => {
+            let text
+            if (post.text.split(' ').length > 20) {
+                text = post.text.split(' ').slice(0, 21).join(' ')
+                text += '...'
+            }
+            return (
+                <div className="main-news-post" key={post.id}>
+                    <a href="#" className="main-news-img"><img src={post.image} alt="" /></a>
+                    <div className="main-news-content">
+                        <h4 className="main-news-title">{post.title}</h4>
+                        <p className="main-news-description">{text}</p>
+                    </div>
+                </div>
+            )
+        })
+
+        return posts
+    }
+
+    const renderedPosts = renderPosts(news)
 
     return (
         <div className="main-news">
             <div className="container">
                 <div className="main-news-inner">
                     <div className="main-news-first">
-                        <div className="main-news-post">
-                            <a href="#" className="main-news-img"><img src="" alt="" /></a>
-                            <div className="main-news-content">
-                                <h4 className="main-news-title">Cursus penati saccum ut curabitur nulla.</h4>
-                                <p className="main-news-description">maurisque eros molest nunc anteget sed vel lacus mus semper. Anterdumnullam interdum eros dui urna consequam ac nisl nullam ligula vestassa. Condimentumfelis et amet tellent quisquet a leo lacus nec augue accumsan. Sagittislaorem dolor sum at urna et pharetium malesuada nis cons ectus.</p>
-                            </div>
-                        </div>
+                        {renderedPosts[0]}
+                        {renderedPosts[1]}
                     </div>
                     <div className="main-news-rest">
-                        <div className="main-news-post">
-                            <div>
-                                <a href="#"             className="main-news-img"><img src="" alt=""/></a> 
-                            </div>
-                            <div className="main-news-content">
-                                <h4 className="main-news-title">Cursus penati saccum curabi</h4>
-                                <p className="main-news-description">Cursuspenatisaccum ut curabitur nulla tellus tor ames a in curabitur pede. Idet mollisi eros dis orci congue elis et curabitur.</p>
-                            </div>
-                        </div>
-                        <div className="main-news-post">
-                            <div>
-                                <a href="#"             className="main-news-img"><img src="" alt=""/></a> 
-                            </div>
-                            <div className="main-news-content">
-                                <h4 className="main-news-title">Cursus penati saccum curabi</h4>
-                                <p className="main-news-description">Cursuspenatisaccum ut curabitur nulla tellus tor ames a in curabitur pede. Idet mollisi eros dis orci congue elis et curabitur.</p>
-                            </div>
-                        </div>
-                        <div className="main-news-post">
-                            <div>
-                                <a href="#"             className="main-news-img"><img src="" alt=""/></a> 
-                            </div>
-                            <div className="main-news-content">
-                                <h4 className="main-news-title">Cursus penati saccum curabi</h4>
-                                <p className="main-news-description">Cursuspenatisaccum ut curabitur nulla tellus tor ames a in curabitur pede. Idet mollisi eros dis orci congue elis et curabitur.</p>
-                            </div>
-                        </div>
-                        <div className="main-news-post">
-                            <div>
-                                <a href="#"             className="main-news-img"><img src="" alt=""/></a> 
-                            </div>
-                            <div className="main-news-content">
-                                <h4 className="main-news-title">Cursus penati saccum curabi</h4>
-                                <p className="main-news-description">Cursuspenatisaccum ut curabitur nulla tellus tor ames a in curabitur pede. Idet mollisi eros dis orci congue elis et curabitur.</p>
-                            </div>
-                        </div>
+                        {
+                            renderedPosts.slice(2)
+                        }
                     </div>
                 </div>
             </div>

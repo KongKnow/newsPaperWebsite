@@ -5,12 +5,13 @@ export const mainNewsThunk = createAsyncThunk(
     'mainNews/asyncMainNews',
     async () => {
         const {request} = useHttps()
-        return await request('https://newsdata.io/api/1/news?apikey=pub_1828289c774c1fecbb02f45e91cf5f6762909&language=en')
+        return await request('https://api.worldnewsapi.com/search-news?api-key=835b9c377c684eb08486823ad146f94f&offset=4&number=8')
     }
 )
 
 const initialState = {
     mainNews: [],
+    country: 'world',
     mainNewsProcess: 'idle'
 }
 
@@ -23,8 +24,7 @@ const mainNewsSlice = createSlice({
             .addCase(mainNewsThunk.pending, state => {state.mainNewsProcess = 'loading'})
             .addCase(mainNewsThunk.fulfilled, (state, action) => {
                 state.mainNewsProcess = 'success'
-                state.mainNews = action.payload
-                console.log(action.payload)
+                state.mainNews = action.payload.news
             })
             .addCase(mainNewsThunk.rejected, state => {state.mainNewsProcess = 'error'})
     }
