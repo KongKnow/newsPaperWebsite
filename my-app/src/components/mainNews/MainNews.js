@@ -1,6 +1,16 @@
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { mainNewsThunk } from './mainNewsSlice'
 import './mainNews.scss'
 
 const MainNews = () => {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(mainNewsThunk())
+    })
+
     return (
         <div className="main-news">
             <div className="container">

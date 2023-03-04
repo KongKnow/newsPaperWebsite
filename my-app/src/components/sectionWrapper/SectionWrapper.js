@@ -1,5 +1,8 @@
 import './sectionWrapper.scss'
-import SortedNews from '../SortedNews/SortedNews'
+import SortedNews from '../sortedNews/SortedNews'
+import CategoriedNews from '../categoriedNews/CategoriedNews'
+import Advertisement from '../advertisement/Advertisement'
+import Categories from '../categories/Categories'
 
 const SectionWrapper = () => {
     return (
@@ -11,10 +14,16 @@ const SectionWrapper = () => {
                             <SortedNews title={'LATEST NEWS'}/>
                             <SortedNews title={'POPULAR NEWS'}/>
                         </div>
-                        <div className="categoried-news"></div>
+                        <div className="categoried-news">
+                            <CategoriedNews/>
+                        </div>
                     </div>
-                    <div className="advertisement"></div>
-                    <div className="filters"></div>
+                    <div className="advertisement">
+                        <Advertisement/>
+                    </div>
+                    <div className="categories">
+                        <Categories/>
+                    </div>
                 </div>
             </div>
         </div>

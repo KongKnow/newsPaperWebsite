@@ -1,6 +1,8 @@
-import Header from "../components/header/Heder";
-import MainNews from "../components/mainNews/MainNews";
-import SectionWrapper from "../components/sectionWrapper/SectionWrapper";
+import Header from "../components/header/Heder"
+import MainNews from "../components/mainNews/MainNews"
+import SectionWrapper from "../components/sectionWrapper/SectionWrapper"
+import SliderNews from "../components/sliderNews/SliderNews"
+import Footer from "../components/footer/Footer"
 
 function App() {
   return (
@@ -8,6 +10,8 @@ function App() {
       <Header/>
       <MainNews/>
       <SectionWrapper/>
+      <SliderNews/>
+      <Footer/>
     </>
   );
 }
