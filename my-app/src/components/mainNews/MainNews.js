@@ -1,17 +1,20 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { mainNewsThunk } from './mainNewsSlice'
+import Spinner from '../spinner/Spinner'
+import Error from '../error/Error'
 import './mainNews.scss'
 
 const MainNews = () => {
 
     const news = useSelector(state => state.mainNews.mainNews)
-    const country = useSelector(state => state.mainNews.country)
+    const status = useSelector(state => state.mainNews.mainNewsProcess)
+    const country = useSelector(state => state.header.country)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(mainNewsThunk(country))
-    }, [])
+    }, [country])
 
     const renderPosts = (arr) => {
         const posts = arr.map(post => {
@@ -35,20 +38,27 @@ const MainNews = () => {
     }
 
     const renderedPosts = renderPosts(news)
+    const loadingNews =  status === 'loading' ? <Spinner/> : null
+    const fulfilledNews = status === 'success' ?  <>
+                                                    <div className="main-news-first">
+                                                        {renderedPosts[0]}
+                                                        {renderedPosts[1]}
+                                                    </div>
+                                                    <div className="main-news-rest">
+                                                        {
+                                                            renderedPosts.slice(2)
+                                                        }
+                                                    </div>
+                                                </> : null
+    const rejectedNews = status === 'error' ? <Error/> : null
 
     return (
         <div className="main-news">
             <div className="container">
                 <div className="main-news-inner">
-                    <div className="main-news-first">
-                        {renderedPosts[0]}
-                        {renderedPosts[1]}
-                    </div>
-                    <div className="main-news-rest">
-                        {
-                            renderedPosts.slice(2)
-                        }
-                    </div>
+                    {loadingNews}
+                    {fulfilledNews}
+                    {rejectedNews}
                 </div>
             </div>
         </div>

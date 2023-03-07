@@ -2,6 +2,7 @@
 
     &-inner {
         display: flex;
+        justify-content: center;
         gap: 40px;
         padding: 30px 0;
         border-bottom: 4px double #999;
@@ -66,7 +67,7 @@
 
     &-title {
         color: #444;
-        font-size: 22px;
+        font-size: 14px;
         margin-bottom: 10px;
         // white-space: nowrap;
         // text-overflow: ellipsis;
@@ -75,7 +76,7 @@
 
     &-description {
         color: #666;
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 

@@ -1,4 +1,4 @@
-import Header from "../components/header/Heder"
+import Header from "../components/header/Header"
 import MainNews from "../components/mainNews/MainNews"
 import SectionWrapper from "../components/sectionWrapper/SectionWrapper"
 import SliderNews from "../components/sliderNews/SliderNews"

@@ -1,3 +1,7 @@
+import { useDispatch } from 'react-redux'
+import { changeCountry } from './headerSlice'
+import { useEffect } from 'react'
+
 import facebook from '../../assets/facebook.svg'
 import twitter from '../../assets/twitter.svg'
 import google from '../../assets/google.svg'
@@ -6,12 +10,14 @@ import instagram from '../../assets/instagram.svg'
 import './header.scss'
 
 const Header = () => {
+    const dispatch = useDispatch()
 
     const onCountry = (e) => {
         e.target.parentElement.childNodes.forEach(button => {
             button.classList.remove('active')
         })
         e.target.classList.add('active')
+        dispatch(changeCountry(e.target.textContent))
     }
 
     return (
