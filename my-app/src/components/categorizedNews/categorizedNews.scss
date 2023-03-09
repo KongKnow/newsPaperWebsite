@@ -1,16 +1,16 @@
 @import '../../styles/vars.scss';
 
-.categoried-news-inner {
+.categorized-news-inner {
     margin-top: 30px;
 }
 
-.categoried-news-categories {
+.categorized-news-categories {
     display: flex;
     gap: 1px;
     margin-bottom: 20px;
 }
 
-.categoried-news-category {
+.categorized-news-category {
     color: #C0C0C0;
     font-size: 12px;
     text-transform: uppercase;
@@ -22,19 +22,21 @@
     cursor: pointer;
 }
 
-.categoried-news-list {
+.categorized-news-list {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 25px;
 }
 
-.categoried-news-title {
+.categorized-news-title {
     display: block;
     color: $red;
     font-size: 12px;
     margin-bottom: 15px;
 }
 
-.categoried-news-img {
+.categorized-news-img {
     display: block;
     width: 122px;
     height: 80px;
@@ -49,7 +51,7 @@
     }
 }
 
-.categoried-news-description {
+.categorized-news-description {
     color: #666;
     font-size: 12px;
 }

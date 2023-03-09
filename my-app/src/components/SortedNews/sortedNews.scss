@@ -1,19 +1,24 @@
 @import '../../styles/vars.scss';
 
 .sorted-news-inner {
-    width: 50%;
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sorted-news-name {
     color: #666;
     font-size: 16px;
+    width: 100%;
     padding-bottom: 10px;
     border-bottom: 1px solid #666;
     margin-bottom: 15px;
 }
 
 .sorted-news-post {
-    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
     display: flex;
     gap: 8px;
 
@@ -64,4 +69,8 @@
     &:hover {
         opacity: 0.5;
     }
+}
+
+.MuiBox-roo.css-k008qs {
+    margin: auto;
 }
