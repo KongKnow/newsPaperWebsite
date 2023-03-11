@@ -1,18 +1,13 @@
-import Header from "../components/header/Header"
-import MainNews from "../components/mainNews/MainNews"
-import SectionWrapper from "../components/sectionWrapper/SectionWrapper"
-import SliderNews from "../components/sliderNews/SliderNews"
-import Footer from "../components/footer/Footer"
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import MainPage from '../components/pages/MainPage'
 
 function App() {
   return (
-    <>
-      <Header/>
-      <MainNews/>
-      <SectionWrapper/>
-      <SliderNews/>
-      <Footer/>
-    </>
+    <Router>
+      <Routes>
+        <Route path='/' element={<MainPage/>}/>
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { mainNewsThunk } from './mainNewsSlice'
+import { Link } from 'react-router-dom'
 import Spinner from '../spinner/Spinner'
 import Error from '../error/Error'
 import './mainNews.scss'
@@ -25,9 +26,9 @@ const MainNews = () => {
             }
             return (
                 <div className="main-news-post" key={post.id}>
-                    <a href="#" className="main-news-img"><img src={post.image} alt="" /></a>
+                    <Link to={`/${post.url.slice(12).split('/').join('-')}`} className="main-news-img"><img src={post.image} alt="" /></Link>
                     <div className="main-news-content">
-                        <h4 className="main-news-title">{post.title}</h4>
+                        <Link to={`/${post.url.slice(12).split('/').join('-')}`} className="main-news-title">{post.title}</Link>
                         <p className="main-news-description">{text}</p>
                     </div>
                 </div>

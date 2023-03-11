@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux"
 
 export const useHttps = () => {
     const request = async (url, method = 'GET', body = null, headers = {'Content-Type': 'application/json'}) => {
