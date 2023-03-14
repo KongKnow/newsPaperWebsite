@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { categorizedNewsThunk } from './categorizedNewsSlice'
 import { changeCategory } from './categorizedNewsSlice'
@@ -17,6 +18,13 @@ const CategorizedNews = () => {
         dispatch(categorizedNewsThunk(category))
     }, [category])
 
+    const onSinglePage = (data) => {
+        localStorage.setItem('singlePageTitle', data.title)
+        localStorage.setItem('singlePageImage', data.image)
+        localStorage.setItem('singlePageDescr', data.text)
+        localStorage.setItem('singlePageAuthor', data.author)
+    }
+
     const renderPosts = (arr) => {
         const posts = arr.map(post => {
             let text
@@ -26,8 +34,12 @@ const CategorizedNews = () => {
             }
             return (
                 <div className="categorized-news-post" key={post.id}>
-                    <a href="#" className="categorized-news-title">{post.title}</a>
-                    <a href="#" className="categorized-news-img"><img src={post.image} alt="" /></a>
+                    <Link to={`/${post.id}`}
+                    onClick={() => onSinglePage(post)}
+                    className="categorized-news-title">{post.title}</Link>
+                    <Link to={`/${post.id}`} 
+                    onClick={() => onSinglePage(post)}
+                    className="categorized-news-img"><img src={post.image} alt="" /></Link>
                     <p className="categorized-news-description">{text}</p>                    
                 </div>
             )

@@ -1,7 +1,4 @@
-import { useDispatch } from 'react-redux'
-import { changeCountry } from './headerSlice'
-import { useEffect } from 'react'
-
+import {Link} from 'react-router-dom'
 import facebook from '../../assets/facebook.svg'
 import twitter from '../../assets/twitter.svg'
 import google from '../../assets/google.svg'
@@ -9,17 +6,7 @@ import instagram from '../../assets/instagram.svg'
 
 import './header.scss'
 
-const Header = () => {
-    const dispatch = useDispatch()
-
-    const onCountry = (e) => {
-        e.target.parentElement.childNodes.forEach(button => {
-            button.classList.remove('active')
-        })
-        e.target.classList.add('active')
-        dispatch(changeCountry(e.target.textContent))
-    }
-
+const Header = (props) => {
     return (
         <header className="header">
             <div className="header-linkbar">
@@ -51,20 +38,13 @@ const Header = () => {
             </div>
             <div className="header-titles">
                 <div className="container">
-                    <h1 className="header-titles-title">MAG MAGAZINE</h1>
-                    <h3 className="header-titles-subtitle">ALL THE LATEST NEWS & INFORMATION IN THE WORLD</h3>
+                    <div className="header-titles-inner">
+                        <Link to={'/'} className="header-titles-title">MAG MAGAZINE</Link>
+                        <Link to={'/'} className="header-titles-subtitle">ALL THE LATEST NEWS & INFORMATION IN THE WORLD</Link>
+                    </div>
                 </div>
             </div>
-            <nav className="header-nav">
-                <div className="container">
-                    <div className="header-nav-inner">
-                        <button onClick={(e) => onCountry(e)} className="header-nav-link active">world</button>
-                        <button onClick={(e) => onCountry(e)} className="header-nav-link">usa</button>
-                        <button onClick={(e) => onCountry(e)} className="header-nav-link">england</button>
-                        <button onClick={(e) => onCountry(e)} className="header-nav-link">germany</button>
-                    </div>
-                </div>                
-            </nav>
+            {props.children}
         </header>
     )
 }

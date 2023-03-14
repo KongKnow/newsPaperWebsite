@@ -17,6 +17,13 @@ const MainNews = () => {
         dispatch(mainNewsThunk(country))
     }, [country])
 
+    const onSinglePage = (data) => {
+        localStorage.setItem('singlePageTitle', data.title)
+        localStorage.setItem('singlePageImage', data.image)
+        localStorage.setItem('singlePageDescr', data.text)
+        localStorage.setItem('singlePageAuthor', data.author)
+    }
+
     const renderPosts = (arr) => {
         const posts = arr.map(post => {
             let text
@@ -26,9 +33,16 @@ const MainNews = () => {
             }
             return (
                 <div className="main-news-post" key={post.id}>
-                    <Link to={`/${post.url.slice(12).split('/').join('-')}`} className="main-news-img"><img src={post.image} alt="" /></Link>
+                    <Link to={`/${post.id}`} 
+                    className="main-news-img"><img src={post.image} 
+                    alt=""
+                    onClick={() => onSinglePage(post)}
+                    /></Link>
                     <div className="main-news-content">
-                        <Link to={`/${post.url.slice(12).split('/').join('-')}`} className="main-news-title">{post.title}</Link>
+                        <Link to={`/${post.id}`} 
+                        className="main-news-title"
+                        onClick={() => onSinglePage(post)}
+                        >{post.title}</Link>
                         <p className="main-news-description">{text}</p>
                     </div>
                 </div>

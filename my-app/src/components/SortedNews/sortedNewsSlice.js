@@ -6,7 +6,7 @@ export const sortedNewsPopularThunk = createAsyncThunk(
     'sortedNewsPopular/asyncSortedNewsPopular',
     async () => {
         const {request} = useHttps()
-        return await request('https://api.worldnewsapi.com/search-news?api-key=86a5e9b2d6b147bca5d4b7b81cb9cf2e&number=3&offset=4&text=popular')
+        return await request('https://api.worldnewsapi.com/search-news?api-key=&number=3&offset=4&text=popular')
     }
 )
 
@@ -14,7 +14,7 @@ export const sortedNewsLatestThunk = createAsyncThunk(
     'sortedNewsLatest/asyncSortedNewsLatest',
     async () => {
         const {request} = useHttps()
-        return await request('https://api.worldnewsapi.com/search-news?api-key=86a5e9b2d6b147bca5d4b7b81cb9cf2e&number=3')
+        return await request('https://api.worldnewsapi.com/search-news?api-key=&number=3')
     }
 )
 
@@ -45,7 +45,7 @@ const sortedNewsSlice = createSlice({
             .addCase(sortedNewsLatestThunk.rejected, state => {state.sortedNewsLatestProcess = 'error'})
     }
 })
-
+// eslint-disable-next-line
 const {actions, reducer} = sortedNewsSlice;
 
 export default reducer

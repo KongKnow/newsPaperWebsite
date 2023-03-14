@@ -29,7 +29,7 @@ const sliderNewsSlice = createSlice({
             .addCase(sliderNewsThunk.rejected, state => {state.sliderNewsProcess = 'error'})
     }
 })
-
+// eslint-disable-next-line
 const {actions, reducer} = sliderNewsSlice;
 
 export default reducer

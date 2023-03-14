@@ -6,7 +6,7 @@ export const categorizedNewsThunk = createAsyncThunk(
     'categorizedNews/asyncCategorizedNews',
     async (category) => {
         const {request} = useHttps()
-        return await request(`https://api.worldnewsapi.com/search-news?api-key=86a5e9b2d6b147bca5d4b7b81cb9cf2e&offset=4&number=4&text=${category}`)
+        return await request(`https://api.worldnewsapi.com/search-news?api-key=&offset=4&number=4&text=${category}`)
     }
 )
 

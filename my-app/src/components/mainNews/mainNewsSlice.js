@@ -5,14 +5,17 @@ import {useHttps} from '../../hooks/http.hook'
 export const mainNewsThunk = createAsyncThunk(
     'mainNews/asyncMainNews',
     async (country) => {
-        let url = 'https://api.worldnewsapi.com/search-news?api-key=86a5e9b2d6b147bca5d4b7b81cb9cf2e&offset=4&number=8';
+        let url = 'https://api.worldnewsapi.com/search-news?api-key=&offset=4&number=8';
         switch (country) {
             case 'usa':
                 url += '&source-countries=us'
+                break
             case 'england':
                 url += '&source-countries=gb'
+                break
             case 'germany':
                 url += '&source-countries=de'
+                break
             default:
                 break
         }
@@ -40,7 +43,7 @@ const mainNewsSlice = createSlice({
             .addCase(mainNewsThunk.rejected, state => {state.mainNewsProcess = 'error'})
     }
 })
-
+// eslint-disable-next-line
 const {actions, reducer} = mainNewsSlice;
 
 export default reducer

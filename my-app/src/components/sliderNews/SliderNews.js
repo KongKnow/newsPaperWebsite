@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Slider from 'react-slick'
 import { useDispatch, useSelector } from 'react-redux'
 import { sliderNewsThunk } from './sliderNewsSlice'
@@ -13,17 +14,19 @@ const SliderNews = () => {
         dispatch(sliderNewsThunk())
     }, [])
 
+    const onSinglePage = (data) => {
+        localStorage.setItem('singlePageTitle', data.title)
+        localStorage.setItem('singlePageImage', data.image)
+        localStorage.setItem('singlePageDescr', data.text)
+        localStorage.setItem('singlePageAuthor', data.author)
+    }
+
     const renderPosts = (arr) => {
         const posts = arr.map(post => {
-            let text
-            if (post.text.split(' ').length > 20) {
-                text = post.text.split(' ').slice(0, 21).join(' ')
-                text += '...'
-            }
             return (
                 <div className="slider-news-post" key={post.id}>
                     <time className="slider-news-author">{post.author}</time>
-                    <a href='#' className="slider-news-title">{post.title}</a>
+                    <Link to={`/${post.id}`} onClick={() => onSinglePage(post)} href='#' className="slider-news-title">{post.title}</Link>
                 </div>
             )
         })
