@@ -6,7 +6,7 @@ export const sliderNewsThunk = createAsyncThunk(
     'sliderNews/asyncSliderNews',
     async () => {
         const {request} = useHttps()
-        return await request('https://api.worldnewsapi.com/search-news?api-key=86a5e9b2d6b147bca5d4b7b81cb9cf2e&offset=10&number=10')
+        return await request('https://api.worldnewsapi.com/search-news?api-key=&offset=10&number=10')
     }
 )
 

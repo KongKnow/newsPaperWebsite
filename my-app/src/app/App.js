@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/category' element={<ListNewsPage/>}/>
+        <Route path='/category/:category' element={<ListNewsPage/>}/>
         <Route path='/:id' element={<SingleNewsPage/>}/>
         <Route path='/'  element={<MainPage/>}/>
       </Routes>
