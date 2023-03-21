@@ -1,4 +1,6 @@
+import { useEffect } from 'react'
 import {Link} from 'react-router-dom'
+import {useAuth} from '../../hooks/useAuth'
 import facebook from '../../assets/facebook.svg'
 import twitter from '../../assets/twitter.svg'
 import google from '../../assets/google.svg'
@@ -7,17 +9,32 @@ import instagram from '../../assets/instagram.svg'
 import './header.scss'
 
 const Header = (props) => {
+
+    const {isAuth, email} = useAuth()
+
+    const profileCheck = (res, email) => {
+        if (res) {
+            return <Link to='/profile' className="functional-link">{email}</Link>
+        }
+
+        return(
+            <>
+                <Link to='/singup' className="functional-link">Sign up</Link>
+                | 
+                <Link to='/login' className="functional-link">Login</Link>
+            </>
+        )
+    }
+    
+    const profileChecked = profileCheck(isAuth, email)
+
     return (
         <header className="header">
             <div className="header-linkbar">
                 <div className="container">
                     <div className="header-linkbar-inner">
                         <div className="functional-links">
-                            <a href="#" className="functional-link">Sign up</a>
-                            | 
-                            <a href="#" className="functional-link">Login</a>
-                            | 
-                            <a href="#" className="functional-link">Archived News</a>
+                            {profileChecked}
                         </div>
                         <div className="socialmedia-links">
                             <a href="https://www.facebook.com/" target='__blank' className="socialmedia-link">

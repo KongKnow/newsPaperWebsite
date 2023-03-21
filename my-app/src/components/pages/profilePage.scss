@@ -1,0 +1,15 @@
+.logout-btn {
+    width: 100px;
+    background-color: #999;
+    padding: 4px;
+    border: 0;
+    font-family: 'Coda', sans-serif;
+    margin-top: 20px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+
+    &:hover {
+        background-color: #acacac;
+    }
+}

@@ -5,9 +5,10 @@ import sortedNews from '../components/sortedNews/sortedNewsSlice'
 import categorizedNews from '../components/categorizedNews/categorizedNewsSlice'
 import sliderNews from '../components/sliderNews/sliderNewsSlice'
 import listNews from '../components/pages/listNewsSlice'
+import form from '../components/pages/formSlice'
 
 const store = configureStore({
-    reducer: {mainNews, header, sortedNews, categorizedNews, sliderNews, listNews},
+    reducer: {mainNews, header, sortedNews, categorizedNews, sliderNews, listNews, form},
     middleware: getDefaultMiddleware => getDefaultMiddleware(),
     devTools: process.env.NODE_ENV !== 'production'
 })

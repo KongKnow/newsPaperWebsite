@@ -2,6 +2,9 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import MainPage from '../components/pages/MainPage'
 import SingleNewsPage from '../components/pages/SingleNewsPage';
 import ListNewsPage from '../components/pages/ListNewsPage';
+import LoginPage from '../components/pages/LoginPage';
+import SingUpPage from '../components/pages/SingUpPage';
+import ProfilePage from '../components/pages/ProfilePage';
 
 function App() {
   return (
@@ -9,6 +12,9 @@ function App() {
       <Routes>
         <Route path='/category/:category' element={<ListNewsPage/>}/>
         <Route path='/:id' element={<SingleNewsPage/>}/>
+        <Route path='/login' element={<LoginPage/>}/>
+        <Route path='/singup' element={<SingUpPage/>}/>
+        <Route path='/profile' element={<ProfilePage/>}/>
         <Route path='/'  element={<MainPage/>}/>
       </Routes>
     </Router>
