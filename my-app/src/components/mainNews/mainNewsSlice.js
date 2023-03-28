@@ -5,7 +5,7 @@ import {useHttps} from '../../hooks/http.hook'
 export const mainNewsThunk = createAsyncThunk(
     'mainNews/asyncMainNews',
     async (country) => {
-        let url = 'https://api.worldnewsapi.com/search-news?api-key=d1409cb84d26419fb9311955e22a1f0a&offset=4&number=8';
+        let url = 'https://api.worldnewsapi.com/search-news?api-key=&offset=4&number=8';
         switch (country) {
             case 'usa':
                 url += '&source-countries=us'
