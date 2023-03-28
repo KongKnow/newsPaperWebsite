@@ -3,6 +3,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { Link, useNavigate } from 'react-router-dom'
+import { useHttps } from '../../hooks/http.hook';
 import { setUser } from './formSlice'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
@@ -12,17 +13,26 @@ const SingUpPage = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const {request} = useHttps()
     
-    const hanadleSingUp = (email, password, name) => {
+    const hanadleSingUp = (email, password) => {
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
         .then(({user}) => {
             console.log(user)
+            localStorage.setItem('userEmail', user.email)
+            localStorage.setItem('userUid', user.uid)
+            localStorage.setItem('userToken', user.accessToken)
             dispatch(setUser({
                 email: user.email,
                 id: user.uid,
-                token: user.accessToken,
-                name: name
+                token: user.accessToken
+            }))
+            
+
+            request(`http://localhost:3001/email`, 'POST', JSON.stringify({
+                id: user.uid,
+                posts: []
             }))
 
             return navigate("/profile");
@@ -39,12 +49,10 @@ const SingUpPage = () => {
                         <Formik
 
                             initialValues={{
-                                name : '',
                                 email: '',
                                 password: '',
                             }}
                             validationSchema={Yup.object({
-                                name: Yup.string().min(5, 'Minimum 5 symbols').required('You should enter your name here'),
                                 email: Yup.string().email('Enter an email, please!').required('You shoud enter your email!')
                             })}
                             onSubmit={values => {
@@ -52,8 +60,6 @@ const SingUpPage = () => {
                             }}
                         >
                             <Form className='form-section-form'>
-                                <Field className='form-section-input' id='name' name='name' type='text'/>
-                                <ErrorMessage className='form-section-error' name='name' component='div'/>
                                 <Field className='form-section-input' id='email' name='email' type='text'/>
                                 <ErrorMessage className='form-section-error' name='email' component='div'/>
                                 <Field className='form-section-input' id='password' name='password' type='password'/>

@@ -22,6 +22,7 @@ const MainNews = () => {
         localStorage.setItem('singlePageImage', data.image)
         localStorage.setItem('singlePageDescr', data.text)
         localStorage.setItem('singlePageAuthor', data.author)
+        localStorage.setItem('singlePageId', data.id)
     }
 
     const renderPosts = (arr) => {

@@ -13,16 +13,18 @@ const LoginPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     
-    const hanadleLogin = (email, password, name) => {
+    const hanadleLogin = (email, password) => {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
         .then(({user}) => {
             console.log(user)
+            localStorage.setItem('userEmail', user.email)
+            localStorage.setItem('userUid', user.uid)
+            localStorage.setItem('userToken', user.accessToken)
             dispatch(setUser({
                 email: user.email,
                 id: user.uid,
-                token: user.accessToken,
-                name: name
+                token: user.accessToken
             }))
 
             return navigate("/profile");

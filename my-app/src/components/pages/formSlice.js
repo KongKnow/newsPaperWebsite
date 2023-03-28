@@ -4,7 +4,6 @@ const initialState = {
     email: null,
     token: null,
     id: null,
-    name: null
 }
 
 const formSlice = createSlice({
@@ -15,13 +14,14 @@ const formSlice = createSlice({
             state.email = action.payload.email
             state.token = action.payload.token
             state.id = action.payload.id
-            state.name = action.payload.name
         },
         removeUser: (state) => {
             state.email = null
             state.token = null
             state.id = null
-            state.name = null
+            localStorage.removeItem('userEmail')
+            localStorage.removeItem('userUid')
+            localStorage.removeItem('userToken')
         }
     }
 })
