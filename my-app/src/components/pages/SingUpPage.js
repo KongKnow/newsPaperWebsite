@@ -3,6 +3,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { Link, useNavigate } from 'react-router-dom'
+import Helmet from 'react-helmet'
 import { useHttps } from '../../hooks/http.hook';
 import { setUser } from './formSlice'
 import Header from '../header/Header'
@@ -42,6 +43,9 @@ const SingUpPage = () => {
 
     return (
         <>
+        <Helmet>
+            <title>Mag Magazine - Sing up</title>
+        </Helmet>
             <Header/>
             <div className="form-section">
                 <div className="container">

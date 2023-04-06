@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { listNewsThunk } from './listNewsSlice'
 import { Link } from 'react-router-dom'
+import Helmet from 'react-helmet'
 import Spinner from '../spinner/Spinner'
 import Error from '../error/Error'
 import Header from "../header/Header"
@@ -55,6 +56,9 @@ const ListNewsPage = () => {
 
     return (
         <>
+        <Helmet>
+            <title>Mag Magazine - Category: {category}</title>
+        </Helmet>
             <Header/>
                 <div className="list-news">
                     <div className="container">

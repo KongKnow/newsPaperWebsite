@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import Helmet from 'react-helmet'
 import { useHttps } from "../../hooks/http.hook"
 import {useAuth} from '../../hooks/useAuth'
 import Header from "../header/Header"
@@ -50,6 +51,9 @@ const SingleNewsPage = () => {
 
     return (
         <>
+        <Helmet>
+            <title>Mag Magazine - {postInfo.title}</title>
+        </Helmet>
             <Header/>
                 <div className="single-post">
                     <div className="container">

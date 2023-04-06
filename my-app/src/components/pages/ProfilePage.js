@@ -1,6 +1,7 @@
 import { useEffect, useCallback} from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
+import Helmet from 'react-helmet'
 import { profilePageThunk } from "./ProfilePageSlice"
 import { removeUser } from "./formSlice"
 import { useHttps } from "../../hooks/http.hook"
@@ -86,6 +87,9 @@ const ProfilePage = () => {
 
     return (
         <>
+        <Helmet>
+            <title>Mag Magazine - Your profile</title>
+        </Helmet>
             <Header/>
                 <div className="profile-section">
                     <div className="container">

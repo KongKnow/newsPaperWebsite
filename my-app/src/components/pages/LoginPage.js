@@ -3,6 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { Link, useNavigate } from 'react-router-dom'
+import Helmet from 'react-helmet'
 import { setUser } from './formSlice'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
@@ -34,6 +35,9 @@ const LoginPage = () => {
 
     return (
         <>
+        <Helmet>
+            <title>Mag Magazine - Log in</title>
+        </Helmet>
             <Header/>
             <div className="form-section">
                 <div className="container">
